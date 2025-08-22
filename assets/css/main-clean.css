@@ -1,0 +1,402 @@
+
+/* ================================
+   CUSTOM OVERRIDES (Divya Patel)
+   ================================ */
+
+/* === Compact & clean intro section === */
+#intro {
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+}
+#intro h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+#intro p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 1.5rem auto;
+}
+#intro .actions .button.primary {
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+}
+
+/* === Fixed top nav === */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  backdrop-filter: saturate(140%) blur(6px);
+  background: rgba(20, 20, 25, 0.85);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  padding: 0.5rem 1rem;
+}
+#wrapper {
+  padding-top: 64px; /* push content below fixed nav */
+}
+#nav .links li a {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.95rem;
+}
+#nav .icons .icon {
+  padding: 0.45rem;
+  border-radius: 999px;
+}
+
+/* === Thumbnail list layout for projects === */
+/* === Improved project row layout with centered image === */
+.project-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;  /* bigger thumbnail */
+  gap: 2rem;                         /* more space between image and text */
+  align-items: center;               /* center image with text */
+}
+
+.image.thumb img {
+  width: 100%;
+  height: auto;        /* keep natural aspect ratio */
+  max-height: 160px;   /* prevent overly tall images */
+  object-fit: contain; /* fit image without cropping */
+  border-radius: 0.35rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 0.5rem;
+}
+
+.image.thumb img:hover {
+  border-color: var(--accent-color);
+}
+.project-body header h2 {
+  margin: 0 0 0.25rem 0;
+}
+.posts article {
+  margin-bottom: 1.25rem;
+}
+@media (max-width: 736px) {
+  .project-row {
+    grid-template-columns: 1fr;
+  }
+  .image.thumb img {
+    height: 180px;
+  }
+}
+
+/* === Footer cleanup === */
+
+/* Footer cleanup */
+#copyright {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1.25rem 0 1.75rem;
+  border-top: 1px solid #e0e0e0;
+}
+#copyright p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  color: #777;
+  letter-spacing: 0.3px;
+}
+
+/* Footer social icons row */
+#copyright .footer-social {
+  list-style: none;
+  display: inline-flex;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+}
+#copyright .footer-social .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  background: #fff;
+}
+#copyright .footer-social .icon:hover {
+  transform: translateY(-2px);
+  border-color: #bbb;
+  color: #005f87;
+}
+
+#copyright a {
+  color: #bbb;
+  text-decoration: none;
+}
+#copyright a:hover {
+  color: #fff;
+}
+
+/* === Accent color override (Blue) === */
+:root {
+  --accent-color: #0077b6; /* LinkedIn-style blue */
+}
+a,
+.button,
+.button.primary,
+.actions .button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  color: #fff !important;
+}
+a:hover,
+.button:hover,
+.button.primary:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
+  background-color: #005f87 !important;
+  border-color: #005f87 !important;
+}
+.icons .icon {
+  color: var(--accent-color);
+}
+.icons .icon:hover {
+  color: #005f87;
+}
+
+
+/* === Nav text links (Projects | Contact) === */
+#nav .links {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#nav .links li a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--accent-color);
+  transition: color 0.2s ease;
+}
+
+#nav .links li a:hover {
+  color: #005f87; /* darker blue on hover */
+}
+
+/* Keep nav layout balanced (links + icons) */
+#nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+
+/* === Smooth scrolling === */
+html {
+  scroll-behavior: smooth;
+}
+
+#nav .links li a.active {
+  color: #fff;
+  background-color: var(--accent-color);
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.4rem;
+  transition: all 0.25s ease;
+}
+
+
+/* === Force project headings to ignore button/link background === */
+.project-body header h2 a {
+  background: #fff !important;   /* white background */
+  color: #000 !important;        /* black text */
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.25rem;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.project-body header h2 a:hover {
+  background: #f0f0f0 !important; /* light gray on hover */
+  color: #000 !important;
+}
+
+/* === Force projects to stack vertically === */
+.posts {
+  display: block !important;   /* cancel grid/flex */
+}
+
+.posts article {
+  width: 100% !important;      /* full width */
+  margin-bottom: 2rem;         /* spacing between projects */
+}
+
+/* === Full-width white strip for project headings === */
+.project-body header h2 {
+  background: #fff;            /* white strip */
+  color: #000;                 /* black text */
+  padding: 0.75rem 1rem;       /* breathing room */
+  border-radius: 0.35rem;      /* soften corners */
+  margin-bottom: 1rem;         /* space below heading */
+}
+
+.project-body header h2 a {
+  color: inherit !important;   /* inherit black from h2 */
+  text-decoration: none;
+}
+
+.project-body header h2:hover {
+  background: #f0f0f0;         /* light gray hover */
+}
+
+
+/* === Project card styling === */
+.posts article {
+  background: #fff;                   /* white card */
+  border-radius: 0.5rem;              /* rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* soft shadow */
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;              /* space between cards */
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;   /* image + text */
+  gap: 2rem;
+  align-items: center;                /* center image */
+}
+
+.project-body {
+  max-width: 700px;
+}
+
+.project-body p {
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.image.thumb img {
+  width: 100%;
+  height: auto;
+  max-height: 160px;
+  object-fit: contain;
+  border-radius: 0.35rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 0.5rem;
+}
+
+/* === Project card hover effect === */
+.posts article {
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.posts article:hover {
+  transform: translateY(-6px); /* lift card */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* stronger shadow */
+}
+
+/* === Contact links cleanup === */
+.split.contact a {
+  background: none !important;
+  color: #000 !important;
+  padding: 0;
+  border: none;
+  text-decoration: underline;
+}
+.split.contact a:hover {
+  color: var(--accent-color) !important;
+  text-decoration: none;
+}
+
+
+/* === Contact section heading === */
+.contact-section {
+  max-width: 800px;
+  margin: 0 auto 3.5rem auto;
+  padding: 0 1rem;
+  scroll-margin-top: 90px; /* so #contact anchor isn't hidden under fixed nav */
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.6rem;
+  letter-spacing: 0.8px;
+  margin: 0 0 0.25rem 0;
+  color: #111;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: 0.6rem auto 0.75rem;
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+  color: #666;
+  font-size: 0.98rem;
+}
+
+/* === Contact grid (aligned labels + info) === */
+.contact {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 1rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-item h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-item p {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* Clean link style for phone/email */
+.contact-item a {
+  background: none !important;
+  color: #000 !important;
+  text-decoration: underline;
+  padding: 0;
+  border: 0;
+}
+.contact-item a:hover {
+  color: var(--accent-color) !important;
+  text-decoration: none;
+}
+
+/* Stack on mobile */
+@media (max-width: 736px) {
+  .contact {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 0.5rem 0;
+  }
+  .contact-item h3 { margin-bottom: 0.2rem; }
+}

@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/main-clean.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -19,12 +20,12 @@
 
 				<!-- Intro -->
 					<div id="intro">
-						<h1>Divya Patel Portfolio</h1>
-						<p>Data Analyst skilled in SQL, Tableau and Python.</p>
-						<p> <a href="https://html5up.net/license">@DivyaPatel</a></p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
+					<h1>Divya Patel</h1>
+					<p><strong>Data Analyst</strong> skilled in SQL, Tableau & Python<br>
+					Turning raw data into actionable insights through clean queries, dashboards, and analysis.</p>
+					<ul class="actions">
+						<li><a href="#main" class="button primary">View My Projects</a></li>
+					</ul>
 					</div>
 
 				<!-- Header -->
@@ -35,97 +36,169 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">Projects</a></li>
+							<li><a href="#main">Projects</a></li>
+							<li><a href="#contact">Contact</a></li>
 						</ul>
 						<ul class="icons">
-									<li><a href="#" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							<li>
+								<a href="https://www.linkedin.com/in/divya-patel-YOURHANDLE/" target="_blank" rel="noopener" class="icon brands alt fa-linkedin">
+									<span class="label">LinkedIn</span>
+								</a>
+							</li>
+							<li>
+								<a href="https://github.com/divyap0708" target="_blank" rel="noopener" class="icon brands alt fa-github">
+									<span class="label">GitHub</span>
+								</a>
+							</li>
 						</ul>
 					</nav>
 
+					
+
 				<!-- Main -->
 					<div id="main">
-
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<h2><a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Data%20Cleaning%20in%20SQL%20-%20Layoffs.sql" target="_blank" >Data Cleaning in SQL</a></h2>
-									<p>In this project we cleaned layoffs data in SQL server.</p>
-								</header>
-								<a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Data%20Cleaning%20in%20SQL%20-%20Layoffs.sql" target="_blank" class="image main"><img src="images/layoffs.jpg" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Data%20Cleaning%20in%20SQL%20-%20Layoffs.sql"  target="_blank" class="button large">View Project</a></li>
-								</ul>
-							</article>
-
-						<!-- Posts -->
 							<section class="posts">
+							<article>
+							<div class="project-row">
+								<a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Data%20Cleaning%20in%20SQL%20-%20Layoffs.sql" target="_blank" class="image thumb">
+								<img src="images/data-cleaning.png" alt="Data Cleaning in SQL project thumbnail">
+								</a>
+								<div class="project-body">
+								<header>
+									<h2>
+									<a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Data%20Cleaning%20in%20SQL%20-%20Layoffs.sql" target="_blank">
+										Data Cleaning in SQL
+									</a>
+									</h2>
+								</header>
+
+								<p><strong>Problem:</strong> The raw layoffs dataset contained duplicates, inconsistent formatting, null values, and unusable data types.</p>
+								<p><strong>Solution:</strong> Built staging tables to preserve raw data, removed duplicates with <code>ROW_NUMBER()</code>, standardized company/industry/country names, reformatted dates, and addressed null values.</p>
+								<p><strong>Tools:</strong> SQL (CTEs, window functions, TRIM, UPDATE, DELETE, ALTER).</p>
+								<p><strong>Results:</strong> Produced a clean, standardized dataset ready for accurate analysis of layoff trends across industries, companies, and countries.</p>
+
+								<ul class="actions special">
+									<li><a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Data%20Cleaning%20in%20SQL%20-%20Layoffs.sql" target="_blank" class="button">View Project</a></li>
+								</ul>
+								</div>
+							</div>
+							</article>
 								<article>
+								<div class="project-row">
+									<a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Exploratory%20Data%20Analysis%20-%20Layoffs.sql" target="_blank" class="image thumb">
+									<img src="images/layoffs-data-analysis.png" alt="Data Exploration in SQL project thumbnail">
+									</a>
+									<div class="project-body">
 									<header>
-										<h2><a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Exploratory%20Data%20Analysis%20-%20Layoffs.sql" target="_blank">Data Exploration In SQL</a></h2>
+										<h2>
+										<a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Exploratory%20Data%20Analysis%20-%20Layoffs.sql" target="_blank">
+											Data Exploration in SQL
+										</a>
+										</h2>
 									</header>
-									<a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Exploratory%20Data%20Analysis%20-%20Layoffs.sql" target="_blank" class="image fit"><img src="images/EDA.jpg" alt="" /></a>
-									<p>Data Exploration of Layoffs Dataset in SQL Server.</p>
+
+									<p><strong>Problem:</strong> Needed to analyze global layoffs data to uncover industry trends, company impact, and time-based patterns.</p>
+									<p><strong>Solution:</strong> Used exploratory analysis with aggregations, ranking, and rolling totals to measure layoffs by industry, country, company stage, and year.</p>
+									<p><strong>Tools:</strong> SQL (CTEs, window functions, GROUP BY, aggregations).</p>
+									<p><strong>Results:</strong> Revealed top companies with highest layoffs, industries most impacted, rolling monthly totals, and year-wise top 5 companies affected.</p>
+
 									<ul class="actions special">
 										<li><a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Exploratory%20Data%20Analysis%20-%20Layoffs.sql" target="_blank" class="button">View Project</a></li>
 									</ul>
+									</div>
+								</div>
 								</article>
 								<article>
+								<div class="project-row">
+									<a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Restaurant%20Order%20Analysis%20.sql" target="_blank" class="image thumb">
+									<img src="images/restaurant-order-analysis.png" alt="Restaurant Order Analysis project thumbnail">
+									</a>
+									<div class="project-body">
 									<header>
-										<h2><a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Restaurant%20Order%20Analysis%20.sql" target="_blank">Restaurant Order Analysis | MySQL</a></h2>
+										<h2>
+										<a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Restaurant%20Order%20Analysis%20.sql" target="_blank">
+											Restaurant Order Analysis | MySQL
+										</a>
+										</h2>
 									</header>
-									<a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Restaurant%20Order%20Analysis%20.sql" target="_blank" class="image fit"><img src="images/Restaurant Order Analysis.png" alt="" /></a>
-									<p>Restaurant Order Analysis (MySQL)<br>
-  									<strong>Problem:</strong> The restaurant needed insights on sales performance and customer ordering behavior.<br>
-								    <strong>Solution:</strong> Queried and joined menu_items and order_details tables to analyze pricing, order volume, and customer patterns.<br>
-  									<strong>Tools:</strong> MySQL (JOIN, GROUP BY, SUM, COUNT, AVG, subqueries).<br>
-  									<strong>Results:</strong> Identified top-selling/least popular items, peak ordering patterns, and high-value orders to support menu and staffing decisions.</p>
+
+									<p><strong>Problem:</strong> The restaurant needed insights on sales performance and customer ordering behavior.</p>
+									<p><strong>Solution:</strong> Joined <code>menu_items</code> and <code>order_details</code> to analyze pricing, order volume, and ordering patterns.</p>
+									<p><strong>Tools:</strong> MySQL (JOIN, GROUP BY, SUM, COUNT, AVG, subqueries).</p>
+									<p><strong>Results:</strong> Identified top/low sellers, peak ordering windows, and high-value orders to guide menu and staffing decisions.</p>
+
 									<ul class="actions special">
 										<li><a href="https://github.com/divyap0708/Portfolio-Projects/blob/main/Restaurant%20Order%20Analysis%20.sql" target="_blank" class="button">View Project</a></li>
 									</ul>
+									</div>
+								</div>
 								</article>
 								<article>
+								<div class="project-row">
+									<a href="https://public.tableau.com/app/profile/divya.patel5235/viz/AirBnBFullProject_17540143551460/Dashboard1?publish=yes" target="_blank" class="image thumb">
+									<img src="images/tableau.png" alt="AirBnB Analytics Dashboard in Tableau thumbnail">
+									</a>
+									<div class="project-body">
 									<header>
-										<h2><a href="https://public.tableau.com/app/profile/divya.patel5235/viz/AirBnBFullProject_17540143551460/Dashboard1?publish=yes" target="_blank">Tableau Projects</a></h2>
+										<h2>
+										<a href="https://public.tableau.com/app/profile/divya.patel5235/viz/AirBnBFullProject_17540143551460/Dashboard1?publish=yes" target="_blank">
+											AirBnB Analytics Dashboard | Tableau
+										</a>
+										</h2>
 									</header>
-									<a href="https://public.tableau.com/app/profile/divya.patel5235/viz/AirBnBFullProject_17540143551460/Dashboard1?publish=yes" target="_blank" class="image fit"><img src="images/Tableau.jpg" alt="" /></a>
-									<p>This holds all of my Tableau Dashboards.</p>
+
+									<p><strong>Problem:</strong> Needed insights into AirBnB pricing trends and listing patterns across locations to guide hosts and managers in decision-making.</p>
+									<p><strong>Solution:</strong> Built an interactive Tableau dashboard with maps, charts, and filters to analyze average price per bedroom, revenue trends, and price distribution by zipcode.</p>
+									<p><strong>Tools:</strong> Tableau (maps, bar charts, line charts, filters, calculated fields).</p>
+									<p><strong>Results:</strong> Revealed price differences by property size, seasonal revenue shifts, and geographic pricing hot zones, enabling smarter pricing strategies and investment planning.</p>
+
 									<ul class="actions special">
 										<li><a href="https://public.tableau.com/app/profile/divya.patel5235/viz/AirBnBFullProject_17540143551460/Dashboard1?publish=yes" target="_blank" class="button">View Project</a></li>
 									</ul>
-								</article>				
+									</div>
+								</div>
+								</article>
+			
+						<section id="contact" class="contact-section">
+						<h2 class="section-title">Contact Me</h2>
+						<p class="section-subtitle">Open to data analyst roles & collaborations</p>
 
-				
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p><br />
-								Apison, TN 37302</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(415) 728-5711</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">divyapatel7893@gmail.com</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
+						<div class="contact">
+							<div class="contact-item">
+							<h3>Address</h3>
+							<p>Apison, TN 37302</p>
+							</div>
+							<div class="contact-item">
+							<h3>Phone</h3>
+							<p><a href="tel:+14157285711">(415) 728-5711</a></p>
+							</div>
+							<div class="contact-item">
+							<h3>Email</h3>
+							<p><a href="mailto:divyapatel7893@gmail.com">divyapatel7893@gmail.com</a></p>
+							</div>
+						</div>
 						</section>
+
+
 				
 
 				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+						<div id="copyright">
+						<p>&copy; 2025 Divya Patel</p>
+						<ul class="footer-social">
+							<li>
+							<a href="https://www.linkedin.com/in/divya-patel-YOURHANDLE/" target="_blank" rel="noopener" class="icon brands fa-linkedin">
+								<span class="label">LinkedIn</span>
+							</a>
+							</li>
+							<li>
+							<a href="https://github.com/divyap0708" target="_blank" rel="noopener" class="icon brands fa-github">
+								<span class="label">GitHub</span>
+							</a>
+							</li>
+						</ul>
+						</div>
 
-			</div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
