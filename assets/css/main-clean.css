@@ -86,39 +86,45 @@
 
 /* === Footer cleanup === */
 
-/* Footer cleanup */
+/* Footer: compact row with icons */
 #copyright {
-  text-align: center;
-  margin-top: 3rem;
-  padding: 1.25rem 0 1.75rem;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #e8e8e8;
+  background: #fff;
+  padding: 1rem 0 1.25rem;
+  margin-top: 2.25rem;
 }
+
+#copyright .footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* text left, icons right */
+  gap: 1rem;
+}
+
 #copyright p {
-  margin: 0 0 0.5rem 0;
+  margin: 0;
   font-size: 0.9rem;
   color: #777;
   letter-spacing: 0.3px;
 }
 
-/* Footer social icons row */
 #copyright .footer-social {
   list-style: none;
-  display: inline-flex;
-  gap: 0.75rem;
-  padding: 0;
+  display: flex;
+  gap: 0.6rem;
   margin: 0;
+  padding: 0;
 }
 #copyright .footer-social .icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  border: 1px solid #ddd;
-  color: var(--accent-color);
+  width: 34px; height: 34px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid #ddd; border-radius: 50%;
+  color: var(--accent-color); background: #fff;
   text-decoration: none;
-  transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-  background: #fff;
+  transition: transform .15s, border-color .15s, color .15s;
 }
 #copyright .footer-social .icon:hover {
   transform: translateY(-2px);
@@ -126,13 +132,14 @@
   color: #005f87;
 }
 
-#copyright a {
-  color: #bbb;
-  text-decoration: none;
+/* Center on small screens */
+@media (max-width: 736px) {
+  #copyright .footer-inner {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 }
-#copyright a:hover {
-  color: #fff;
-}
+
 
 /* === Accent color override (Blue) === */
 :root {
@@ -399,4 +406,224 @@ html {
     gap: 0.5rem 0;
   }
   .contact-item h3 { margin-bottom: 0.2rem; }
+}
+
+/* === NAV BAR === */
+nav#nav {
+  position: fixed !important;
+  top: 0; left: 0; right: 0;
+  z-index: 1000 !important;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo left, links center, icons right */
+  padding: 1.25rem 1.5rem; /* tall at top */
+  background: transparent;
+  box-shadow: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+nav#nav .logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+nav#nav .links {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav#nav .links li a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav#nav .icons {
+  display: flex;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* After scroll */
+nav#nav.scrolled {
+  background: rgba(20, 20, 25, 0.9);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  padding: 0.6rem 1.5rem; /* shrink */
+}
+
+#wrapper { padding-top: 90px !important; }
+
+/* === CONTACT SECTION === */
+.contact-section {
+  max-width: 800px;
+  margin: 0 auto 3.5rem auto;
+  padding: 0 1rem;
+  scroll-margin-top: 90px;
+}
+.section-title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin: 0 0 0.25rem 0;
+  color: #111;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: 0.6rem auto 0.75rem;
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+.section-subtitle {
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+  color: #666;
+  font-size: 0.98rem;
+}
+.contact {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 1rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.contact-item h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+  color: #333;
+  text-transform: uppercase;
+}
+.contact-item p { margin: 0; color: #555; font-size: 0.95rem; }
+.contact-item a {
+  background: none !important;
+  color: #000 !important;
+  text-decoration: underline;
+  padding: 0;
+}
+.contact-item a:hover {
+  color: var(--accent-color) !important;
+  text-decoration: none;
+}
+@media (max-width: 736px) {
+  .contact { grid-template-columns: 1fr; text-align: center; }
+  .contact-item h3 { margin-bottom: 0.25rem; }
+}
+
+/* === FOOTER === */
+#copyright {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1.25rem 0 1.75rem;
+  border-top: 1px solid #e0e0e0;
+  background: #fff;
+}
+#copyright p {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: #777;
+  letter-spacing: 0.3px;
+}
+#copyright .footer-social {
+  list-style: none;
+  display: inline-flex;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+}
+#copyright .footer-social .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  color: var(--accent-color);
+  background: #fff;
+  transition: transform .15s ease, border-color .15s ease, color .15s ease;
+}
+#copyright .footer-social .icon:hover {
+  transform: translateY(-2px);
+  border-color: #bbb;
+  color: #005f87;
+}
+
+/* === Force nav to always show === */
+nav#nav {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+}
+
+/* NAV: force fixed bar to be visible and full-width */
+nav#nav {
+  position: fixed !important;
+  top: 0; left: 0; right: 0;
+  z-index: 1000 !important;
+
+  /* override theme constraints */
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+
+  /* sizing */
+  height: auto;
+  line-height: normal;
+  padding: 0.75rem 1.25rem;
+
+  /* solid background */
+  background: rgba(20,20,25,0.9);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* push content below fixed nav */
+#wrapper { padding-top: 90px !important; }
+
+/* Contact grid: crisp alignment */
+.contact {
+  display: grid;
+  grid-template-columns: 140px 1fr; /* label | value */
+  align-items: start;
+  gap: 0.75rem 1.5rem;
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+}
+
+/* Make each row span both columns (label left, value right) */
+.contact-item {
+  display: contents; /* lets h3 be in col 1 and p in col 2 naturally */
+}
+.contact-item h3 {
+  grid-column: 1;
+  margin: 0.15rem 0 0 0;
+}
+.contact-item p {
+  grid-column: 2;
+  margin: 0;
+}
+
+/* Keep address/phone on one line if possible */
+.contact-item p,
+.contact-item a {
+  white-space: nowrap;          /* try to keep in one line */
+}
+@media (max-width: 736px) {
+  .contact {
+    grid-template-columns: 1fr; /* stack on mobile */
+    text-align: center;
+  }
+  .contact-item p,
+  .contact-item a { white-space: normal; } /* allow wrap on small screens */
 }
