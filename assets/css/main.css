@@ -4687,3 +4687,16 @@ input, select, textarea {
 		}
 
 	}
+
+	.posts {
+  display: block !important;
+}
+
+.posts article {
+  width: 100% !important;
+  margin-bottom: 2rem; /* spacing between projects */
+}
+
+.posts article p {
+  line-height: 1.6; /* better readability for Problem/Solution/Tools/Results */
+}
