@@ -824,3 +824,26 @@ nav#nav .links a { line-height: 1.2; }
 /* Hide Massively's default MENU pill if it appears */
 #nav .menu { display: none !important; }
 
+/* === NAV LOGO STYLING === */
+nav#nav .logo {
+  font-weight: 700;           /* bold */
+  font-size: 1.2rem;          /* slightly larger than links */
+  letter-spacing: 0.5px;      /* subtle spacing */
+  color: #fff !important;     /* white text */
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+}
+
+nav#nav .logo:hover {
+  color: #ddd !important;     /* soft hover effect */
+}
+
+/* Make logo shrink gracefully on mobile */
+@media (max-width: 768px) {
+  nav#nav .logo {
+    font-size: 1rem;
+    padding: 0.25rem 0.4rem;
+  }
+}
