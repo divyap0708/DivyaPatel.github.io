@@ -824,50 +824,48 @@ nav#nav .links a { line-height: 1.2; }
 /* Hide Massively's default MENU pill if it appears */
 #nav .menu { display: none !important; }
 
-/* === NAV LOGO STYLING (optional but nice) === */
-nav#nav .logo {
-  font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: 0.5px;
+/* === FINAL NUKE: remove any logo box/pseudo elements === */
+#menu,
+body.is-menu-visible #menu { 
+  display: none !important; 
+  visibility: hidden !important; 
+  opacity: 0 !important; 
+}
+#nav .menu { display: none !important; } /* hide theme's default MENU trigger */
+
+nav#nav .logo,
+#nav .logo {
+  background: none !important;
+  background-image: none !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  position: relative !important; /* neutralize theme positioning */
+}
+
+/* kill ALL pseudo/logo placeholders the theme might inject */
+nav#nav .logo:before,
+nav#nav .logo:after,
+#nav .logo:before,
+#nav .logo:after,
+nav#nav .logo .image,
+#nav .logo .image {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  background-image: none !important;
+}
+
+/* ensure the text itself shows cleanly */
+nav#nav .logo,
+#nav .logo {
   color: #fff !important;
+  font-weight: 700;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.5rem;
-}
-nav#nav .logo:hover {
-  color: #ddd !important;
+  gap: 0 !important;      /* no gap reserved for an icon */
 }
 
-/* === Disable Massively's off-canvas menu (this removes the blank square) === */
-#menu,
-body.is-menu-visible #menu {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-}
-/* Hide any default 'MENU' pill/trigger */
-#nav .menu {
-  display: none !important;
-}
-
-/* Ensure our logo has no injected image/pseudo box */
-nav#nav .logo img,
-nav#nav .logo .image,
-nav#nav .logo:before {
-  display: none !important;
-  content: none !important;
-  border: 0 !important;
-}
-nav#nav .logo {
-  padding-left: 0 !important;
-  background: none !important;
-}
-
-/* === Mobile-only size tweak for the logo === */
-@media (max-width: 768px) {
-  nav#nav .logo {
-    font-size: 1rem;
-    padding: 0.25rem 0.4rem;
-  }
-}
