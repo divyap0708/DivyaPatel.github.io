@@ -847,3 +847,47 @@ nav#nav .logo:after,
   width: 0 !important;
   height: 0 !important;
 }
+
+/* === Footer: tidy icons on mobile === */
+@media (max-width: 768px) {
+  /* keep the whole footer compact */
+  #copyright {
+    padding: 0.9rem 0 1.1rem;
+    margin-top: 1.25rem;
+  }
+
+  /* stack neatly and center */
+  #copyright .footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;                 /* space between text and icons */
+  }
+
+  /* one tight row of icons */
+  #copyright .footer-social {
+    display: inline-flex;
+    gap: 0.5rem;                 /* tighter spacing between icons */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* smaller, cleaner icon buttons */
+  #copyright .footer-social .icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #d8d8d8;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transform: none;             /* no lift on mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  #copyright .footer-inner { flex-direction: column; }
+  #copyright .footer-social { order: -1; }  /* icons first */
+}
