@@ -17,24 +17,32 @@
 
 					<!-- Nav -->
 					<nav id="nav">
+					<button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menus">
+						<span></span><span></span><span></span>
+					</button>
+
 					<a href="index.html" class="logo">Divya Patel</a>
-					<ul class="links">
+
+					<div id="nav-menus">
+						<ul class="links">
 						<li><a href="#main">Projects</a></li>
 						<li><a href="#contact">Contact</a></li>
-					</ul>
-					<ul class="icons">
+						</ul>
+						<ul class="icons">
 						<li>
-						<a href="https://www.linkedin.com/in/divya-patel-YOURHANDLE/" target="_blank" rel="noopener" class="icon brands fa-linkedin">
+							<a href="https://www.linkedin.com/in/divya-patel-YOURHANDLE/" target="_blank" rel="noopener" class="icon brands fa-linkedin">
 							<span class="label">LinkedIn</span>
-						</a>
+							</a>
 						</li>
 						<li>
-						<a href="https://github.com/divyap0708" target="_blank" rel="noopener" class="icon brands fa-github">
+							<a href="https://github.com/divyap0708" target="_blank" rel="noopener" class="icon brands fa-github">
 							<span class="label">GitHub</span>
-						</a>
+							</a>
 						</li>
-					</ul>
+						</ul>
+					</div>
 					</nav>
+
 
 				<!-- Intro -->
 					<div id="intro">
@@ -186,6 +194,16 @@
 
 
 		<!-- Scripts -->
+					<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				var intro = document.getElementById('intro');
+				if (intro) {
+				intro.classList.remove('inactive');
+				intro.style.opacity = '1';
+				intro.style.transform = 'none';
+				}
+			});
+			</script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -193,6 +211,36 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+			(function () {
+				const nav = document.getElementById('nav');
+				const toggle = nav.querySelector('.nav-toggle');
+				const links = nav.querySelectorAll('.links a');
+
+				if (!toggle) return;
+
+				// Toggle open/close
+				toggle.addEventListener('click', function () {
+				const open = nav.classList.toggle('open');
+				toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+				});
+
+				// Close menu when a link is clicked (better UX)
+				links.forEach(a => a.addEventListener('click', () => {
+				nav.classList.remove('open');
+				toggle.setAttribute('aria-expanded', 'false');
+				}));
+
+				// Optional: close on outside click
+				document.addEventListener('click', (e) => {
+				if (!nav.contains(e.target)) {
+					nav.classList.remove('open');
+					toggle.setAttribute('aria-expanded', 'false');
+				}
+				});
+			})();
+			</script>
+
 
 	</body>
 </html>
