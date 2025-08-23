@@ -1,12 +1,38 @@
+/* =========================================
+   Divya Patel — CLEAN OVERRIDES (final)
+   ========================================= */
 
-/* ================================
-   CUSTOM OVERRIDES (Divya Patel)
-   ================================ */
+/* ---------- Theme variables ---------- */
+:root {
+  --accent-color: #0077b6;
+}
 
-/* === Compact & clean intro section === */
+/* ---------- Global polish ---------- */
+html {
+  scroll-behavior: smooth;
+}
+section {
+  padding: 2.5rem 0;
+  margin: 0 auto;
+} /* tighter sections */
+.posts {
+  margin: 2rem auto;
+}
+
+/* ---------- Intro (hero) ---------- */
 #intro {
-  padding: 3rem 1.5rem 2rem;
+  padding: 2rem 1.5rem 2rem !important;
   text-align: center;
+  margin-top: 0 !important;
+  min-height: auto !important; /* no forced tall hero */
+  scroll-margin-top: 80px;
+}
+/* keep intro visible even with scrollex */
+#intro,
+#intro.inactive {
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
 }
 #intro h1 {
   font-size: 2.5rem;
@@ -16,7 +42,7 @@
   font-size: 1.1rem;
   line-height: 1.6;
   max-width: 600px;
-  margin: 0 auto 1.5rem auto;
+  margin: 0 auto 1.5rem;
 }
 #intro .actions .button.primary {
   font-size: 1rem;
@@ -24,268 +50,181 @@
   border-radius: 2rem;
 }
 
-/* === Fixed top nav === */
-#nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  backdrop-filter: saturate(140%) blur(6px);
-  background: rgba(20, 20, 25, 0.85);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  padding: 0.5rem 1rem;
-}
-#wrapper {
-  padding-top: 64px; /* push content below fixed nav */
-}
-#nav .links li a {
-  padding: 0.6rem 0.9rem;
-  font-size: 0.95rem;
-}
-#nav .icons .icon {
-  padding: 0.45rem;
-  border-radius: 999px;
-}
-
-/* === Thumbnail list layout for projects === */
-/* === Improved project row layout with centered image === */
-.project-row {
-  display: grid;
-  grid-template-columns: 220px 1fr;  /* bigger thumbnail */
-  gap: 2rem;                         /* more space between image and text */
-  align-items: center;               /* center image with text */
-}
-
-.image.thumb img {
-  width: 100%;
-  height: auto;        /* keep natural aspect ratio */
-  max-height: 160px;   /* prevent overly tall images */
-  object-fit: contain; /* fit image without cropping */
-  border-radius: 0.35rem;
-  border: 1px solid #ddd;
-  background: #fff;
-  padding: 0.5rem;
-}
-
-.image.thumb img:hover {
-  border-color: var(--accent-color);
-}
-.project-body header h2 {
-  margin: 0 0 0.25rem 0;
-}
-.posts article {
-  margin-bottom: 1.25rem;
-}
-@media (max-width: 736px) {
-  .project-row {
-    grid-template-columns: 1fr;
-  }
-  .image.thumb img {
-    height: 180px;
-  }
-}
-
-/* === Footer cleanup === */
-
-/* Footer: compact row with icons */
-#copyright {
-  border-top: 1px solid #e8e8e8;
-  background: #fff;
-  padding: 1rem 0 1.25rem;
-  margin-top: 2.25rem;
-}
-
-#copyright .footer-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  display: flex;
+/* ---------- Fixed Nav (desktop + mobile) ---------- */
+nav#nav {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000 !important;
+  display: flex !important;
   align-items: center;
-  justify-content: space-between;  /* text left, icons right */
+  justify-content: space-between;
   gap: 1rem;
+  padding: 1.25rem 1.5rem; /* tall at top */
+  margin: 0 !important; /* kill theme constraints */
+  width: 100% !important;
+  max-width: none !important;
+  background: transparent;
+  box-shadow: none;
+  transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
 }
-
-#copyright p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #777;
-  letter-spacing: 0.3px;
+nav#nav.scrolled {
+  /* shrink on scroll */
+  background: rgba(20, 20, 25, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  padding: 0.6rem 1.5rem;
 }
-
-#copyright .footer-social {
-  list-style: none;
-  display: flex;
-  gap: 0.6rem;
-  margin: 0;
-  padding: 0;
-}
-#copyright .footer-social .icon {
-  width: 34px; height: 34px;
-  display: inline-flex; align-items: center; justify-content: center;
-  border: 1px solid #ddd; border-radius: 50%;
-  color: var(--accent-color); background: #fff;
+/* text-only logo (no box) */
+nav#nav .logo {
+  font: 700 1.2rem/1 sans-serif;
+  color: #fff;
   text-decoration: none;
-  transition: transform .15s, border-color .15s, color .15s;
 }
-#copyright .footer-social .icon:hover {
-  transform: translateY(-2px);
-  border-color: #bbb;
-  color: #005f87;
+nav#nav .logo:hover {
+  color: #ddd;
 }
-
-/* Center on small screens */
-@media (max-width: 736px) {
-  #copyright .footer-inner {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
+/* remove any theme “logo box” */
+nav#nav .logo,
+#nav .logo {
+  background: none !important;
+  background-image: none !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
 }
-
-
-/* === Accent color override (Blue) === */
-:root {
-  --accent-color: #0077b6; /* LinkedIn-style blue */
-}
-a,
-.button,
-.button.primary,
-.actions .button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
-  background-color: var(--accent-color) !important;
-  border-color: var(--accent-color) !important;
-  color: #fff !important;
-}
-a:hover,
-.button:hover,
-.button.primary:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-input[type="button"]:hover {
-  background-color: #005f87 !important;
-  border-color: #005f87 !important;
-}
-.icons .icon {
-  color: var(--accent-color);
-}
-.icons .icon:hover {
-  color: #005f87;
+nav#nav .logo:before,
+nav#nav .logo:after,
+#nav .logo:before,
+#nav .logo:after {
+  display: none !important;
+  content: none !important;
 }
 
-
-/* === Nav text links (Projects | Contact) === */
-#nav .links {
+/* nav links + icons */
+nav#nav .links,
+nav#nav .icons {
   display: flex;
   gap: 1.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
-#nav .links li a {
-  font-size: 0.95rem;
-  font-weight: 500;
+nav#nav .links a,
+nav#nav .icons .icon {
+  color: #fff;
   text-decoration: none;
-  color: var(--accent-color);
-  transition: color 0.2s ease;
+  transition: color 0.2s;
 }
 
-#nav .links li a:hover {
-  color: #005f87; /* darker blue on hover */
+/* push page below fixed nav */
+#wrapper {
+  padding-top: 90px !important;
 }
 
-/* Keep nav layout balanced (links + icons) */
-#nav ul {
+/* ----- Mobile menu (custom hamburger) ----- */
+nav#nav .nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+nav#nav .nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 5px 0;
+  background: #fff;
+  transition: transform 0.2s, opacity 0.2s;
+}
+nav#nav.open .nav-toggle span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+nav#nav.open .nav-toggle span:nth-child(2) {
+  opacity: 0;
+}
+nav#nav.open .nav-toggle span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+#nav-menus {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
 }
 
-
-/* === Smooth scrolling === */
-html {
-  scroll-behavior: smooth;
+/* Hide Massively’s default MENU panel/trigger */
+#menu,
+body.is-menu-visible #menu,
+#nav .menu {
+  display: none !important;
 }
 
-#nav .links li a.active {
-  color: #fff;
-  background-color: var(--accent-color);
-  padding: 0.4rem 0.75rem;
-  border-radius: 0.4rem;
-  transition: all 0.25s ease;
+/* Mobile: collapse menus into panel */
+@media (max-width: 768px) {
+  nav#nav .nav-toggle {
+    display: block;
+  }
+  nav#nav {
+    padding: 0.6rem 1rem;
+  }
+  nav#nav #nav-menus {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: 0.5rem;
+    background: rgba(20, 20, 25, 0.98);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.75rem 1rem 1rem;
+    transform-origin: top;
+    transform: scaleY(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.18s, opacity 0.18s;
+  }
+  nav#nav.open #nav-menus {
+    transform: scaleY(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  nav#nav .links,
+  nav#nav .icons {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  #wrapper {
+    padding-top: 80px !important;
+  }
 }
 
-
-/* === Force project headings to ignore button/link background === */
-.project-body header h2 a {
-  background: #fff !important;   /* white background */
-  color: #000 !important;        /* black text */
-  padding: 0.3rem 0.6rem;
-  border-radius: 0.25rem;
-  display: inline-block;
-  text-decoration: none;
-}
-
-.project-body header h2 a:hover {
-  background: #f0f0f0 !important; /* light gray on hover */
-  color: #000 !important;
-}
-
-/* === Force projects to stack vertically === */
+/* ---------- Project cards ---------- */
 .posts {
-  display: block !important;   /* cancel grid/flex */
-}
-
+  display: block !important;
+} /* cancel theme grid */
 .posts article {
-  width: 100% !important;      /* full width */
-  margin-bottom: 2rem;         /* spacing between projects */
-}
-
-/* === Full-width white strip for project headings === */
-.project-body header h2 {
-  background: #fff;            /* white strip */
-  color: #000;                 /* black text */
-  padding: 0.75rem 1rem;       /* breathing room */
-  border-radius: 0.35rem;      /* soften corners */
-  margin-bottom: 1rem;         /* space below heading */
-}
-
-.project-body header h2 a {
-  color: inherit !important;   /* inherit black from h2 */
-  text-decoration: none;
-}
-
-.project-body header h2:hover {
-  background: #f0f0f0;         /* light gray hover */
-}
-
-
-/* === Project card styling === */
-.posts article {
-  background: #fff;                   /* white card */
-  border-radius: 0.5rem;              /* rounded corners */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* soft shadow */
+  width: 100% !important;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
-  margin-bottom: 2.5rem;              /* space between cards */
+  margin-bottom: 2rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.posts article:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .project-row {
   display: grid;
-  grid-template-columns: 220px 1fr;   /* image + text */
+  grid-template-columns: 220px 1fr; /* image + text */
   gap: 2rem;
-  align-items: center;                /* center image */
+  align-items: center;
 }
-
-.project-body {
-  max-width: 700px;
-}
-
-.project-body p {
-  line-height: 1.6;
-  margin-bottom: 0.75rem;
-}
-
 .image.thumb img {
   width: 100%;
   height: auto;
@@ -296,191 +235,63 @@ html {
   background: #fff;
   padding: 0.5rem;
 }
-
-/* === Project card hover effect === */
-.posts article {
-  background: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 1.5rem;
-  margin-bottom: 2.5rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.project-body {
+  max-width: 700px;
+}
+.project-body p {
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
 }
 
-.posts article:hover {
-  transform: translateY(-6px); /* lift card */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* stronger shadow */
+/* headings: simple, readable */
+.project-body header h2 {
+  margin: 0 0 0.75rem;
 }
-
-/* === Contact links cleanup === */
-.split.contact a {
-  background: none !important;
+.project-body header h2 a {
   color: #000 !important;
-  padding: 0;
-  border: none;
-  text-decoration: underline;
-}
-.split.contact a:hover {
-  color: var(--accent-color) !important;
   text-decoration: none;
 }
-
-
-/* === Contact section heading === */
-.contact-section {
-  max-width: 800px;
-  margin: 0 auto 3.5rem auto;
-  padding: 0 1rem;
-  scroll-margin-top: 90px; /* so #contact anchor isn't hidden under fixed nav */
-}
-
-.section-title {
-  text-align: center;
-  font-size: 1.6rem;
-  letter-spacing: 0.8px;
-  margin: 0 0 0.25rem 0;
-  color: #111;
-  position: relative;
-}
-
-.section-title::after {
-  content: "";
-  display: block;
-  width: 64px;
-  height: 3px;
-  margin: 0.6rem auto 0.75rem;
-  background: var(--accent-color);
-  border-radius: 2px;
-}
-
-.section-subtitle {
-  text-align: center;
-  margin: 0 0 1.5rem 0;
-  color: #666;
-  font-size: 0.98rem;
-}
-
-/* === Contact grid (aligned labels + info) === */
-.contact {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 1rem 2rem;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.contact-item h3 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin: 0;
-  color: #333;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.contact-item p {
-  margin: 0;
-  color: #555;
-  font-size: 0.95rem;
-  line-height: 1.45;
-}
-
-/* Clean link style for phone/email */
-.contact-item a {
-  background: none !important;
-  color: #000 !important;
+.project-body header h2 a:hover {
   text-decoration: underline;
-  padding: 0;
-  border: 0;
-}
-.contact-item a:hover {
-  color: var(--accent-color) !important;
-  text-decoration: none;
 }
 
-/* Stack on mobile */
-@media (max-width: 736px) {
-  .contact {
+/* Mobile card stack */
+@media (max-width: 768px) {
+  .project-row {
     grid-template-columns: 1fr;
-    text-align: center;
-    gap: 0.5rem 0;
+    gap: 0.75rem;
+    align-items: start;
   }
-  .contact-item h3 { margin-bottom: 0.2rem; }
+  .image.thumb {
+    justify-self: center;
+    width: 100%;
+    max-width: 520px;
+  }
+  .image.thumb img {
+    max-height: 220px;
+    padding: 0.35rem;
+  }
+  .project-body {
+    max-width: 100%;
+  }
+  .posts article {
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
 }
 
-/* === NAV BAR === */
-
-nav#nav {
-  position: fixed !important;
-  top: 0; left: 0; right: 0;
-  z-index: 1000 !important;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* logo left, links center, icons right */
-  padding: 1.25rem 1.5rem; /* tall at top */
-  background: transparent;
-  box-shadow: none;
-  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
-}
-
-nav#nav .logo {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #fff;
-  text-decoration: none;
-}
-
-nav#nav .links {
-  display: flex;
-  gap: 1.25rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav#nav .links li a {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-nav#nav .icons {
-  display: flex;
-  gap: 0.75rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* Remove leftover logo box */
-nav#nav .logo img {
-  display: none !important;
-}
-
-
-/* After scroll */
-nav#nav.scrolled {
-  background: rgba(20, 20, 25, 0.9);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  padding: 0.6rem 1.5rem; /* shrink */
-}
-
-#wrapper { padding-top: 90px !important; }
-
-/* === CONTACT SECTION === */
+/* ---------- Contact section ---------- */
 .contact-section {
   max-width: 800px;
-  margin: 0 auto 3.5rem auto;
+  margin: 0 auto 2.5rem;
   padding: 0 1rem;
   scroll-margin-top: 90px;
 }
 .section-title {
   text-align: center;
   font-size: 1.6rem;
-  margin: 0 0 0.25rem 0;
+  letter-spacing: 0.8px;
+  margin: 0 0 0.25rem;
   color: #111;
 }
 .section-title::after {
@@ -494,384 +305,87 @@ nav#nav.scrolled {
 }
 .section-subtitle {
   text-align: center;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1.5rem;
   color: #666;
   font-size: 0.98rem;
 }
+
 .contact {
   display: grid;
   grid-template-columns: 150px 1fr;
   gap: 1rem 2rem;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 640px;
+  margin: 0 auto 2rem;
+}
+.contact-item {
+  display: contents;
 }
 .contact-item h3 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin: 0;
+  grid-column: 1;
+  margin: 0.15rem 0 0;
+  font: 700 0.95rem/1.2 sans-serif;
   color: #333;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
-.contact-item p { margin: 0; color: #555; font-size: 0.95rem; }
+.contact-item p {
+  grid-column: 2;
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
 .contact-item a {
   background: none !important;
   color: #000 !important;
   text-decoration: underline;
   padding: 0;
+  border: 0;
 }
 .contact-item a:hover {
   color: var(--accent-color) !important;
   text-decoration: none;
 }
+
 @media (max-width: 736px) {
-  .contact { grid-template-columns: 1fr; text-align: center; }
-  .contact-item h3 { margin-bottom: 0.25rem; }
+  .contact {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 0.5rem 0;
+  }
+  .contact-item h3 {
+    margin-bottom: 0.2rem;
+  }
 }
 
-/* === FOOTER === */
+/* ---------- Footer (centered & tidy) ---------- */
 #copyright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  margin-top: 3rem;
-  padding: 1.25rem 0 1.75rem;
-  border-top: 1px solid #e0e0e0;
+  gap: 0.55rem;
+  padding: 1rem 0 1.25rem;
+  margin-top: 1.25rem;
+  border-top: 1px solid #e8e8e8;
   background: #fff;
 }
 #copyright p {
-  margin: 0 0 0.5rem;
+  margin: 0;
   font-size: 0.9rem;
   color: #777;
   letter-spacing: 0.3px;
 }
 #copyright .footer-social {
-  list-style: none;
-  display: inline-flex;
-  gap: 0.75rem;
-  padding: 0;
-  margin: 0;
-}
-#copyright .footer-social .icon {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
   justify-content: center;
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  border: 1px solid #ddd;
-  color: var(--accent-color);
-  background: #fff;
-  transition: transform .15s ease, border-color .15s ease, color .15s ease;
-}
-#copyright .footer-social .icon:hover {
-  transform: translateY(-2px);
-  border-color: #bbb;
-  color: #005f87;
-}
-
-/* === Force nav to always show === */
-nav#nav {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  height: auto !important;
-}
-
-/* NAV: force fixed bar to be visible and full-width */
-nav#nav {
-  position: fixed !important;
-  top: 0; left: 0; right: 0;
-  z-index: 1000 !important;
-
-  /* override theme constraints */
-  margin: 0 !important;
-  width: 100% !important;
-  max-width: none !important;
-
-  /* sizing */
-  height: auto;
-  line-height: normal;
-  padding: 0.75rem 1.25rem;
-
-  /* solid background */
-  background: rgba(20,20,25,0.9);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-}
-
-/* push content below fixed nav */
-#wrapper { padding-top: 90px !important; }
-
-/* Contact grid: crisp alignment */
-.contact {
-  display: grid;
-  grid-template-columns: 140px 1fr; /* label | value */
-  align-items: start;
-  gap: 0.75rem 1.5rem;
-  max-width: 640px;
-  margin: 0 auto 2.5rem;
-}
-
-/* Make each row span both columns (label left, value right) */
-.contact-item {
-  display: contents; /* lets h3 be in col 1 and p in col 2 naturally */
-}
-.contact-item h3 {
-  grid-column: 1;
-  margin: 0.15rem 0 0 0;
-}
-.contact-item p {
-  grid-column: 2;
-  margin: 0;
-}
-
-/* Keep address/phone on one line if possible */
-.contact-item p,
-.contact-item a {
-  white-space: nowrap;          /* try to keep in one line */
-}
-@media (max-width: 736px) {
-  .contact {
-    grid-template-columns: 1fr; /* stack on mobile */
-    text-align: center;
-  }
-  .contact-item p,
-  .contact-item a { white-space: normal; } /* allow wrap on small screens */
-}
-
-/* === Tighten global section spacing === */
-section {
-  padding: 2.5rem 0 !important;   /* reduce default 4–6rem */
-  margin: 0 auto;
-}
-
-.posts {
-  margin: 2rem auto !important;   /* reduce huge top margin */
-}
-
-.contact-section {
-  margin: 2rem auto 2.5rem auto !important;
-  padding: 1rem 0 !important;
-}
-
-#copyright {
-  margin-top: 1.5rem !important;  /* reduce gap above footer */
-}
-
-/* Intro spacing fix */
-#intro {
-  padding-top: 2rem !important;     /* shrink top padding */
-  margin-top: 0 !important;
-  min-height: auto !important;      /* remove forced tall height */
-  scroll-margin-top: 80px;
-}
-
-/* Keep intro always visible (disable fade-out) */
-#intro,
-#intro.inactive {
-  opacity: 1 !important;
-  transform: none !important;
-  pointer-events: auto !important;
-}
-
-/* ========== MOBILE NAV ========== */
-nav#nav {
-  gap: 1rem;
-}
-nav#nav .nav-toggle {
-  display: none; /* shown only on mobile */
-  background: none;
-  border: 0;
-  padding: 0.25rem;
-  margin-right: 0.25rem;
-  cursor: pointer;
-}
-nav#nav .nav-toggle span {
-  display: block;
-  width: 24px; height: 2px;
-  margin: 5px 0;
-  background: #fff;
-  transition: transform .2s ease, opacity .2s ease;
-}
-
-/* hamburger -> X animation */
-nav#nav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-nav#nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
-nav#nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* group the menus for toggling */
-nav#nav #nav-menus {
-  display: flex;
   align-items: center;
-  gap: 1rem;
-}
-
-/* Small screens */
-@media (max-width: 768px) {
-  /* show hamburger, stack menus */
-  nav#nav .nav-toggle { display: block; }
-
-  nav#nav {
-    padding: 0.6rem 1rem;          /* a bit tighter on mobile */
-  }
-
-  /* collapse menus by default */
-  nav#nav #nav-menus {
-    position: absolute;
-    top: 100%; left: 0; right: 0;
-    display: grid;
-    gap: 0.5rem;
-    background: rgba(20,20,25,0.98);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding: 0.75rem 1rem 1rem;
-    transform-origin: top;
-    transform: scaleY(0);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform .18s ease, opacity .18s ease;
-  }
-  nav#nav.open #nav-menus {
-    transform: scaleY(1);
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  nav#nav .links,
-  nav#nav .icons {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  nav#nav .links a,
-  nav#nav .icons .icon {
-    padding: 0.35rem 0.5rem;
-    border-radius: 0.4rem;
-  }
-
-  /* give page more room under fixed nav on mobile */
-  #wrapper { padding-top: 80px !important; }
-}
-
-/* Improve tap targets a bit */
-nav#nav .links a { line-height: 1.2; }
-
-/* ========== MOBILE CARD POLISH ========== */
-@media (max-width: 768px) {
-  .posts article {
-    padding: 1rem;
-    margin-bottom: 1.25rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
-  }
-  .project-row {
-    grid-template-columns: 1fr;   /* stack image above text */
-    gap: 0.75rem;
-    align-items: start;
-  }
-  .image.thumb img {
-    max-height: 180px;
-    padding: 0.35rem;
-  }
-  .project-body { max-width: 100%; }
-  .project-body p { margin-bottom: 0.6rem; }
-  .project-body header h2 { margin-bottom: 0.5rem; }
-}
-
-/* ========== MOBILE CONTACT / FOOTER TIDY ========== */
-@media (max-width: 768px) {
-  .contact { grid-template-columns: 1fr; text-align: left; gap: 0.4rem 0; }
-  .contact-item h3 { margin-top: 0.5rem; }
-  #copyright .footer-inner { flex-direction: column; gap: 0.5rem; }
-}
-
-/* === Mobile fixes: stack project rows, center images === */
-@media (max-width: 768px) {
-  /* Force one column layout (beat theme rules) */
-  .posts article .project-row,
-  .project-row {
-    display: grid !important;
-    grid-template-columns: 1fr !important;  /* image above, text below */
-    gap: 0.75rem !important;
-    align-items: start !important;
-  }
-
-  /* Make the image block full-width and centered */
-  .image.thumb {
-    justify-self: center !important;
-    width: 100% !important;
-    max-width: 520px;             /* keep it reasonable */
-  }
-  .image.thumb img {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 220px;            /* you can lower/raise this */
-    object-fit: contain !important;
-    padding: 0.35rem;
-    margin: 0 auto;
-  }
-
-  /* Let text take full width under the image */
-  .project-body {
-    max-width: 100% !important;
-  }
-
-  /* Tighter card spacing on phones */
-  .posts article {
-    padding: 1rem !important;
-    margin-bottom: 1.25rem !important;
-  }
-}
-
-/* Hide Massively's default MENU pill if it appears */
-#nav .menu { display: none !important; }
-
-/* Override Massively's logo block to remove the box */
-nav#nav .logo,
-#nav .logo {
-  background: none !important;
-  background-image: none !important;
-  padding-left: 0 !important;
-  margin-left: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* Kill any pseudo elements (these often make the square) */
-nav#nav .logo:before,
-nav#nav .logo:after,
-#nav .logo:before,
-#nav .logo:after {
-  display: none !important;
-  content: none !important;
-  background: none !important;
-  border: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
-/* === Footer: force perfect centering + tidy sizing (works with your current HTML) === */
-#copyright {
-  display: flex;
-  flex-direction: column;
-  align-items: center;      /* center everything horizontally */
-  justify-content: center;
-  text-align: center;
-  gap: 0.55rem;             /* space between icons and text */
-  padding: 1rem 0 1.25rem;
-  margin-top: 1.25rem;
-}
-
-/* icons row */
-#copyright .footer-social {
-  display: flex;
-  justify-content: center;  /* true centering */
-  align-items: center;
-  gap: 0.5rem;              /* even spacing between icons */
+  gap: 0.5rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
-/* each icon button (smaller + consistent) */
 #copyright .footer-social .icon {
   width: 30px;
   height: 30px;
@@ -883,24 +397,30 @@ nav#nav .logo:after,
   text-decoration: none;
   line-height: 1;
 }
-
-/* keep copyright text compact */
-#copyright p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #777;
-  letter-spacing: 0.3px;
-}
-
-/* optional: ensure order = icons first, then © text */
-#copyright .footer-social { order: 1; }
-#copyright p { order: 2; }
-
-/* desktop: allow icons + text to sit on one line if you prefer */
 @media (min-width: 769px) {
   #copyright {
     flex-direction: row;
     justify-content: center;
     gap: 0.75rem;
   }
+}
+
+/* ---------- Accent usage (buttons/links) ---------- */
+.button,
+.button.primary,
+.actions .button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  color: #fff !important;
+}
+.button:hover,
+.button.primary:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
+  background-color: #005f87 !important;
+  border-color: #005f87 !important;
 }
