@@ -386,17 +386,27 @@ body.is-menu-visible #menu,
   padding: 0;
   list-style: none;
 }
+
 #copyright .footer-social .icon {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  border: 1px solid #d8d8d8;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  line-height: 1;
+
+  background: var(--accent-color) !important; /* solid blue circle */
+  color: #fff !important;                     /* white icon */
+  border: none !important;
+
+  transition: background .2s, transform .2s;
 }
+
+#copyright .footer-social .icon:hover {
+  background: #005f87 !important;  /* darker blue on hover */
+  transform: translateY(-2px);     /* subtle lift effect */
+}
+
 @media (min-width: 769px) {
   #copyright {
     flex-direction: row;
