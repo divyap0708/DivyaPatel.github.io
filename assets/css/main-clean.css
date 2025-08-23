@@ -824,48 +824,26 @@ nav#nav .links a { line-height: 1.2; }
 /* Hide Massively's default MENU pill if it appears */
 #nav .menu { display: none !important; }
 
-/* === FINAL NUKE: remove any logo box/pseudo elements === */
-#menu,
-body.is-menu-visible #menu { 
-  display: none !important; 
-  visibility: hidden !important; 
-  opacity: 0 !important; 
-}
-#nav .menu { display: none !important; } /* hide theme's default MENU trigger */
-
+/* Override Massively's logo block to remove the box */
 nav#nav .logo,
 #nav .logo {
   background: none !important;
   background-image: none !important;
   padding-left: 0 !important;
   margin-left: 0 !important;
-  position: relative !important; /* neutralize theme positioning */
+  border: none !important;
+  box-shadow: none !important;
 }
 
-/* kill ALL pseudo/logo placeholders the theme might inject */
+/* Kill any pseudo elements (these often make the square) */
 nav#nav .logo:before,
 nav#nav .logo:after,
 #nav .logo:before,
-#nav .logo:after,
-nav#nav .logo .image,
-#nav .logo .image {
+#nav .logo:after {
   display: none !important;
   content: none !important;
+  background: none !important;
+  border: none !important;
   width: 0 !important;
   height: 0 !important;
-  border: 0 !important;
-  background: none !important;
-  background-image: none !important;
 }
-
-/* ensure the text itself shows cleanly */
-nav#nav .logo,
-#nav .logo {
-  color: #fff !important;
-  font-weight: 700;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0 !important;      /* no gap reserved for an icon */
-}
-
