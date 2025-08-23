@@ -848,46 +848,59 @@ nav#nav .logo:after,
   height: 0 !important;
 }
 
-/* === Footer: tidy icons on mobile === */
-@media (max-width: 768px) {
-  /* keep the whole footer compact */
-  #copyright {
-    padding: 0.9rem 0 1.1rem;
-    margin-top: 1.25rem;
-  }
-
-  /* stack neatly and center */
-  #copyright .footer-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;                 /* space between text and icons */
-  }
-
-  /* one tight row of icons */
-  #copyright .footer-social {
-    display: inline-flex;
-    gap: 0.5rem;                 /* tighter spacing between icons */
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  /* smaller, cleaner icon buttons */
-  #copyright .footer-social .icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 1px solid #d8d8d8;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transform: none;             /* no lift on mobile */
-  }
+/* === Footer: force perfect centering + tidy sizing (works with your current HTML) === */
+#copyright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* center everything horizontally */
+  justify-content: center;
+  text-align: center;
+  gap: 0.55rem;             /* space between icons and text */
+  padding: 1rem 0 1.25rem;
+  margin-top: 1.25rem;
 }
 
-@media (max-width: 768px) {
-  #copyright .footer-inner { flex-direction: column; }
-  #copyright .footer-social { order: -1; }  /* icons first */
+/* icons row */
+#copyright .footer-social {
+  display: flex;
+  justify-content: center;  /* true centering */
+  align-items: center;
+  gap: 0.5rem;              /* even spacing between icons */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* each icon button (smaller + consistent) */
+#copyright .footer-social .icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #d8d8d8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  line-height: 1;
+}
+
+/* keep copyright text compact */
+#copyright p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #777;
+  letter-spacing: 0.3px;
+}
+
+/* optional: ensure order = icons first, then © text */
+#copyright .footer-social { order: 1; }
+#copyright p { order: 2; }
+
+/* desktop: allow icons + text to sit on one line if you prefer */
+@media (min-width: 769px) {
+  #copyright {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.75rem;
+  }
 }
