@@ -409,6 +409,7 @@ html {
 }
 
 /* === NAV BAR === */
+
 nav#nav {
   position: fixed !important;
   top: 0; left: 0; right: 0;
@@ -453,6 +454,12 @@ nav#nav .icons {
   margin: 0;
   padding: 0;
 }
+
+/* Remove leftover logo box */
+nav#nav .logo img {
+  display: none !important;
+}
+
 
 /* After scroll */
 nav#nav.scrolled {
