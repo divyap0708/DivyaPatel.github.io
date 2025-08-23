@@ -775,3 +775,45 @@ nav#nav .links a { line-height: 1.2; }
   .contact-item h3 { margin-top: 0.5rem; }
   #copyright .footer-inner { flex-direction: column; gap: 0.5rem; }
 }
+
+/* === Mobile fixes: stack project rows, center images === */
+@media (max-width: 768px) {
+  /* Force one column layout (beat theme rules) */
+  .posts article .project-row,
+  .project-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;  /* image above, text below */
+    gap: 0.75rem !important;
+    align-items: start !important;
+  }
+
+  /* Make the image block full-width and centered */
+  .image.thumb {
+    justify-self: center !important;
+    width: 100% !important;
+    max-width: 520px;             /* keep it reasonable */
+  }
+  .image.thumb img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 220px;            /* you can lower/raise this */
+    object-fit: contain !important;
+    padding: 0.35rem;
+    margin: 0 auto;
+  }
+
+  /* Let text take full width under the image */
+  .project-body {
+    max-width: 100% !important;
+  }
+
+  /* Tighter card spacing on phones */
+  .posts article {
+    padding: 1rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+}
+
+/* Hide Massively's default MENU pill if it appears */
+#nav .menu { display: none !important; }
+
